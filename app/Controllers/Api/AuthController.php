@@ -28,6 +28,8 @@ class AuthController extends Controller
             return $json->errorBadRequest(['user not active.']);
         }
 
+
+
         $time = Time::factory()->getTimestamp();
         $token = JWT::encode(
             [
@@ -39,6 +41,7 @@ class AuthController extends Controller
             env('JWT_KEY'),
             env('JWT_ALGO', 'HS256')
         );
+        
 
         return $json->successOK([
             'token' => $token,
